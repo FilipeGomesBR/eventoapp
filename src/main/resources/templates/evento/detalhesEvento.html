@@ -58,7 +58,7 @@ Spring Boot
 				<tr>
 					<th>Nome</th>
 					<th>RG</th>
-				
+					<th>Deletar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -71,14 +71,21 @@ Spring Boot
 								<span th:text="${convidado.nomeConvidado}"></span>
 							</p></td>
 					</div> 
-					<div class="input-field col s6"> 
+					<div class="input-field col s4"> 
 							
 						<td><p>
 								<span th:text="${convidado.rg}"></span>
 							</p></td>
-				</tr>
+			
+					</div> 
+						<div class="input-field col s2"> 
+							
+				<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}"><i class="material-icons left">delete</i></a></td>
+
+				
 					</div> 
 				</div>
+				</tr>
 			</tbody>
 		</table>
 	

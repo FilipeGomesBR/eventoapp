@@ -1,5 +1,7 @@
 package com.eventoapp.eventoapp.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -11,24 +13,25 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-public class Convidado {
+public class Convidado implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@NotNull
-	@NotEmpty
-	private String rg;
+	private long rg;
 	
-	@NotNull
 	@NotEmpty
 	private String nomeConvidado;
 	
 	@ManyToOne
 	private Evento evento;
 	
-	public String getRg() {
+
+	public long getRg() {
 		return rg;
 	}
-	public void setRg(String rg) {
+	public void setRg(long rg) {
 		this.rg = rg;
 	}
 	public String getNomeConvidado() {
