@@ -23,24 +23,25 @@ Spring Boot
 	  	</nav>
 	</header>
 <div class="container">
-<h1> Cadastrar de Eventos</h1>
-	<form method="post" th:object="${eventos}">
-	<div class="row">
-	
-		ID: <input type="text" value="" name="id" th:field="*{codigo}" readOnly="readonly"/>
-		Nome: <input type="text" value="" name="nome" th:field="*{nome}" />
+<h1> Alterar Eventos</h1>
+	<form method="put">
+	<tr th:each="evento : ${eventos}">
+		Nome: <input type="text" th:value="${evento.nome}" name="nome" />
+		<div class="row">
 		<div class="input-field col s6"> 
-		Local: <input type="text" value="" name="local" th:field="*{local}"/>
+		Local: <input type="text" th:value="${evento.local}" name="local" />
 		</div> 
 		<div class="input-field col s3"> 	
-		Data: <input type="date" value="" name="data" th:field="*{data}"/> 
+		Data: <input type="date" th:value="${evento.data}" name="data" /> 
 		</div>
 		<div class="input-field col s3"> 
-		Horario: <input type="time" value="" name="horario" th:field="*{horario}"/>
+		Horario: <input type="time" th:value="${evento.horario}" name="horario" />
 		</div>
-		<button type="submit" class="waves-effect waves-light btn-small col s3">Salvar</button>
-
-		
+		<button type="submit" class="waves-effect waves-light btn-small col s3">Alterar</button>
+		<div class="input-field col s3"> 	 
+		</div>
+		<h3><a href="/eventos" class="waves-effect waves-light btn-small col s3">Cancelar</a></h3>
+		</tr>
 	</div>
 	</form>
 	
