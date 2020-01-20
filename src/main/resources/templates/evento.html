@@ -6,7 +6,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet" />
 <link type="text/css" rel="stylesheet"
-	href="materialize/css/materialize.min.css" media="screen,projection" />
+	href="/materialize/css/materialize.min.css" media="screen,projection" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
@@ -31,13 +31,14 @@
 					<th>Local</th>
 					<th>Data</th>
 					<th>Horario</th>
+					<th>Editar</th>
 					<th>Deletar</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="evento : ${eventos}">
 					<div class="row">
-						<td><a th:href="@{/{codigo}(codigo = ${evento.codigo})}"><span
+						<td><a th:href="@{detalhesEvento/{codigo}(codigo = ${evento.codigo})}"><span
 								th:text="${evento.nome}"></span></a></td>
 						<td><p>
 								<span th:text="${evento.local}"></span>
@@ -48,6 +49,9 @@
 						<td><p>
 								<span th:text="${evento.horario}"></span>
 							</p></td>
+							<td><a class="waves-effect waves-light btn-small"
+							th:href="@{/atualizarEvento/{codigo}(codigo=${evento.codigo})}"><i
+								class="material-icons">edit</i></a></td>
 					 <td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}"><i class="material-icons">delete</i></a></td>      
 
 					</div>

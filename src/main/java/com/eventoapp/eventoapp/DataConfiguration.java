@@ -3,9 +3,12 @@ package com.eventoapp.eventoapp;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import javax.sql.DataSource;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -13,6 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @Configuration
 public class DataConfiguration {
 	
+	/*
 	@Bean
     public BasicDataSource dataSource() throws URISyntaxException {
         URI dbUri = new URI(System.getenv("DATABASE_URL"));
@@ -39,8 +43,10 @@ public class DataConfiguration {
 		   adapter.setPrepareConnection(true);
 		   return adapter;
 		   }
-
-	/* @Bean
+	*/
+	
+	
+	 @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -59,5 +65,5 @@ public class DataConfiguration {
 		adapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
 		adapter.setPrepareConnection(true);
 		return adapter; 
-	}*/
+	}
 }

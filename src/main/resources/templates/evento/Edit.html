@@ -23,27 +23,18 @@ Spring Boot
 	  	</nav>
 	</header>
 <div class="container">
-<h1> Cadastrar de Eventos</h1>
-	<form method="post" th:object="${eventos}">
-	<div class="row">
-	
-		ID: <input type="text" value="" name="id" th:field="*{codigo}" readOnly="readonly"/>
-		Nome: <input type="text" value="" name="nome" th:field="*{nome}" />
-		<div class="input-field col s6"> 
-		Local: <input type="text" value="" name="local" th:field="*{local}"/>
-		</div> 
-		<div class="input-field col s3"> 	
-		Data: <input type="date" value="" name="data" th:field="*{data}"/> 
-		</div>
-		<div class="input-field col s3"> 
-		Horario: <input type="time" value="" name="horario" th:field="*{horario}"/>
-		</div>
-		<button type="submit" class="waves-effect waves-light btn-small col s3">Salvar</button>
 
-		
-	</div>
+ 
+ <form method="post"  th:object="${convidado}">
+	<h5>Editar convidado</h5>
+		Nome: <input type="text" value="" name="nomeConvidado" th:field="*{nome}" />
+		<div class="input-field col s6"> 
+		RG: <input type="text" th:field="*{rg}"  name="rg" readOnly="readonly" />
+		</div> 
+		<button type="submit" class="waves-effect waves-light btn-small col s3">Atualizar</button>
+
 	</form>
-	
+
 	</div>
 	      <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="js/materialize.min.js"></script>

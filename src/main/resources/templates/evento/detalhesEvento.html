@@ -7,7 +7,7 @@
 Spring Boot
 </title>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
@@ -43,13 +43,14 @@ Spring Boot
 		</div>
 			<th:block th:include="mensagemValidacao"></th:block>
  
- <form method="post">
+ <form method="post"  th:object="${convidado}">
 	<h5>Cadastrar convidado</h5>
-		Nome: <input type="text" value="" name="nomeConvidado" />
+		Codigo Evento: <input type="text" th:field="*{evento.codigo}" readOnly="readonly" name="rg"/>
+		Nome: <input type="text" name="nomeConvidado" th:field="*{nomeConvidado}" />
 		<div class="input-field col s6"> 
-		RG: <input type="text" value="" name="rg" />
+		RG: <input type="text" th:field="*{rg}"  name="rg"/>
 		</div> 
-		<button type="submit" class="waves-effect waves-light btn-small col s3">Adicionar</button>
+		<button type="submit" class="waves-effect waves-light btn-small col s3">Salvar</button>
 
 	</form>
 	<h3 align="center">Lista de convidados</h3>
@@ -59,6 +60,7 @@ Spring Boot
 					<th>Nome</th>
 					<th>RG</th>
 					<th>Deletar</th>
+					<th>Editar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -81,7 +83,9 @@ Spring Boot
 						<div class="input-field col s2"> 
 							
 				<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}"><i class="material-icons left">delete</i></a></td>
-
+					<td><a class="waves-effect waves-light btn-small"
+							th:href="@{/atualizarConvidado/{rg}(rg=${convidado.rg})}"><i
+								class="material-icons">edit</i></a></td>
 				
 					</div> 
 				</div>
